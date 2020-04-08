@@ -21,9 +21,7 @@ router.post('/', async (req,res) => {
     // Create a todo , with body from the client side.
     const todo = new Todo ({
         title: req.body.title,
-        description: req.body.description
     })
-
     try{
         const newTodo = await todo.save()
     // Send back the new todo object after succesfuully created and saved.
@@ -32,6 +30,19 @@ router.post('/', async (req,res) => {
     } catch(err) {
         res.send(400).json({message: err.message})
     }
+})
+
+router.delete('/resetdata', async (req,res) => {
+
+
+    Todo.deleteMany({}, (err, result) => {
+        if (err) {
+            res.send(err);
+          } else {
+            res.send(result);
+          }
+    })
+        
 })
 
 // Updating a todo
