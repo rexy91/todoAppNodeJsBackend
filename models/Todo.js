@@ -7,13 +7,10 @@ const todoSchema = mongoose.Schema({
     title:{
         type: String,
         required: true
-    },
-    description:{
-        type: String,
-        require: true
     }
 })
 
 // Export the schema
 // mongoose.model takes two argument, first will be the name of the model, second is the schema.
+                                //This todos will be the collection created in the DB.
 module.exports = mongoose.model('Todos', todoSchema)

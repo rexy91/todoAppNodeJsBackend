@@ -17,7 +17,6 @@ router.get('/', async (req,res) => {
 } )
 
 // Creating a todo 
-
 router.post('/', async (req,res) => {
     // Create a todo , with body from the client side.
     const todo = new Todo ({
