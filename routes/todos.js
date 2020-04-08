@@ -10,6 +10,7 @@ const Todo = require('../models/Todo')
 router.get('/', async (req,res) => {
     try{
         const todos = await Todo.find()
+        res.json({todos: todos})
     } catch(err){
         res.status(500).json({message: err.message})
     }
@@ -36,21 +37,32 @@ router.post('/', async (req,res) => {
 
 // Updating a todo
 
-// router.patch('/id', (req,res) => {
-//     // First find the todo inside the database:
-//     let todo 
-//     const getTodo = async (req) => {
-//         try{
-//             todo = await Todo.findById(req.params.id)
-//             if (todo === null) {
-//                 // If todo is not found in the database.
-//                 return res.status(404).json({message: 'Cannot find todo item.'})
-//             }
-//         } catch(err){
-//             return res.status(500).json({ message: err.message })
-//         }
-//     }
-//     getTodo(req)
-// })
+router.patch('/id', (req,res) => {
+    // First find the todo inside the database:
+    let todo 
+    console.log(todo)
+    const getTodo = async (req) => {
+        try{
+            todo = await Todo.findById(req.params.id)
+            if (todo === null) {
+                // If todo is not found in the database.
+                return res.status(404).json({message: 'Cannot find todo item.'})
+            }
+        } catch(err){
+            return res.status(500).json({ message: err.message })
+        }
+    }
+    getTodo(req)
+})
+
+// Delete a todo
+router.delete('/:id', async (req,res) => {
+    res.json({message:'delete route hit'})
+    console.log(req.params)
+    const todoTarget = await Todo.findById(req.params.id)
+    todoTarget.deleteOne();
+    console.log(todoTarget)
+    
+})
 
 module.exports = router 
