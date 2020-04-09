@@ -7,9 +7,12 @@ const Todo = require('../models/Todo')
 // Setup routes: 
 
 // Getting all todos
+
 router.get('/', async (req,res) => {
     try{
         const todos = await Todo.find()
+
+        // Response with json
         res.json({todos: todos})
     } catch(err){
         res.status(500).json({message: err.message})
@@ -33,7 +36,6 @@ router.post('/', async (req,res) => {
 })
 
 router.delete('/resetdata', async (req,res) => {
-
 
     Todo.deleteMany({}, (err, result) => {
         if (err) {
