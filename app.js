@@ -7,7 +7,7 @@ require('dotenv').config()
 
 // define the express app 
 const app = express()
-
+const MONGODB_URI = 'mongodb+srv://rexye1991:rexye1991@cluster0-arcfj.mongodb.net/test?retryWrites=true&w=majority'
 // Middlewares:
 app.use(cors())
 app.use(bodyParser.json())
@@ -19,11 +19,16 @@ app.use('/todos', todosRouter)
 // Start the server with port 3000 
 app.listen(3000, () => console.log('server started'))
 
+app.get('/', ()=>{
+    res.json({
+        message:'hello you'
+    })
+})
+
 //Connect to DB
 mongoose.connect(
-process.env.DB_CONNECTION_URL,
+MONGODB_URI,
 { useNewUrlParser: true })
-
 
 // To check if database is connected successfully.
 const DB = mongoose.connection
