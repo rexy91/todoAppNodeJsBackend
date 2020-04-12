@@ -28,7 +28,7 @@ router.post('/', async (req,res) => {
         const newTodo = await todo.save()
     // Send back the new todo object after succesfuully created and saved.
         res.status(201).json({newTodo})
-
+        
     } catch(err) {
         res.send(400).json({message: err.message})
     }

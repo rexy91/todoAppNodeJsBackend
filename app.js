@@ -19,11 +19,6 @@ app.use('/todos', todosRouter)
 // Start the server with port 3000 
 app.listen(3000, () => console.log('server started'))
 
-app.get('/', ()=>{
-    res.json({
-        message:'hello you'
-    })
-})
 
 //Connect to DB
 mongoose.connect(
