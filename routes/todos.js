@@ -11,7 +11,6 @@ const Todo = require('../models/Todo')
 router.get('/', async (req,res) => {
     try{
         const todos = await Todo.find()
-
         // Response with json
         res.json({todos: todos})
     } catch(err){

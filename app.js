@@ -24,6 +24,7 @@ mongoose.connect(
 process.env.DB_CONNECTION_URL,
 { useNewUrlParser: true })
 
+
 // To check if database is connected successfully.
 const DB = mongoose.connection
 DB.once('open', () => console.log('connected to database'))
